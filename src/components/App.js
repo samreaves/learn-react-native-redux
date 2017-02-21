@@ -8,7 +8,10 @@
 
 import React, { Component } from 'react';
 import { View } from 'react-native';
+import { Provider } from 'redux';
+import { createStore } from 'react-redux';
 import { Header } from './common';
+import { reducers } from '../reducers';
 
 
 class App extends Component {
@@ -18,9 +21,11 @@ class App extends Component {
     const headerText = 'Redux Example';
 
     return (
-      <View style={{ flex: 1 }}>
-        <Header title={headerText} />
-      </View>
+      <Provider store={createStore(reducers)}>
+        <View style={{ flex: 1 }}>
+          <Header title={headerText} />
+        </View>
+      </Provider>
     );
   }
 }
