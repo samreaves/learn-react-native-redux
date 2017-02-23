@@ -5,4 +5,4 @@
  * February 20, 2017
  * https://github.com/samreaves/learn-react-native-redux
  */
-export default 1;
+export default () => 1;
