@@ -8,10 +8,11 @@
 
 import React, { Component } from 'react';
 import { View } from 'react-native';
-import { Provider } from 'redux';
-import { createStore } from 'react-redux';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import { Header } from './common';
-import { reducers } from '../reducers';
+import LibraryList from './LibraryList';
+import reducers from '../reducers';
 
 
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
       <Provider store={createStore(reducers)}>
         <View style={{ flex: 1 }}>
           <Header title={headerText} />
+          <LibraryList />
         </View>
       </Provider>
     );
