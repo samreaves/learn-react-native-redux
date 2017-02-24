@@ -14,7 +14,7 @@ const CardSection = (props) => {
 
   const cardSectionStyles = {
     backgroundColor: '#FFF',
-    borderBottomWidth: 0,
+    borderBottomWidth: 1,
     borderColor: '#ddd',
     borderRadius: 2,
     flexDirection: 'row',
