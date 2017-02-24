@@ -7,15 +7,36 @@
  */
 
  import React, { Component } from 'react';
- import { View } from 'react-native';
+ import { ListView } from 'react-native';
  import { connect } from 'react-redux';
- //import { Card, CardSection } from './common';
+ import LibraryListItem from './LibraryListItem';
 
  class LibraryList extends Component {
+
+   componentWillMount() {
+     const ds = new ListView.DataSource({
+       rowHasChanged: (r1, r2) => r1 !== r2
+     });
+
+     this.dataSource = ds.cloneWithRows(this.props.libraries);
+   }
+
+   renderRow(library) {
+     /* Return row of Library Component */
+     return (
+       <LibraryListItem
+         library={library}
+       />
+     );
+   }
+
    render() {
      console.log(this.props);
      return (
-       <View />
+       <ListView
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+       />
      );
    }
  }

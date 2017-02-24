@@ -11,7 +11,7 @@ import { View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { Header } from './common';
-import LibraryList from './LibraryList';
+import LibraryList from './library/LibraryList';
 import reducers from '../reducers';
 
 
