@@ -17,9 +17,10 @@ const CardSection = (props) => {
     borderBottomWidth: 1,
     borderColor: '#ddd',
     borderRadius: 2,
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'flex-start',
     padding: 5,
+    paddingLeft: 15,
     position: 'relative'
   };
 
