@@ -12,5 +12,5 @@
 
  export default combineReducers({
    libraries: LibraryReducer,
-   selection: SelectionReducer
+   selectedLibraryID: SelectionReducer
  });
