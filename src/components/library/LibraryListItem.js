@@ -6,55 +6,58 @@
  * https://github.com/samreaves/learn-react-native-redux
  */
 
- import React, { Component } from 'react';
- import { connect } from 'react-redux';
- import { Text, View, TouchableWithoutFeedback } from 'react-native';
- import { CardSection } from '../common';
- import * as actions from '../../actions';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Text, View, TouchableWithoutFeedback } from 'react-native';
+import { CardSection } from '../common';
+import * as actions from '../../actions';
 
- class LibraryListItem extends Component {
+class LibraryListItem extends Component {
 
-   /* Render expanded description */
-   renderDescription() {
+  /* Render expanded description */
+  renderDescription() {
 
-     const { library, selectedLibraryID } = this.props;
+    const { library, expanded } = this.props;
 
-     /* If library list item's id is app's current selected library id  */
-     if (library.id === selectedLibraryID) {
-       return (
-         <Text>
-           {this.props.library.description}
-         </Text>
-       );
-     }
-   }
+    /* If library list item's id is app's current selected library id  */
+    if (expanded) {
+      return (
+        <Text>
+          {library.description}
+        </Text>
+      );
+    }
+  }
 
-   /* Render entire Library List Item */
-   render() {
+  /* Render entire Library List Item */
+  render() {
 
-     const styles = {
-       fontSize: 18,
-     };
+    const styles = {
+      fontSize: 18,
+    };
 
-     const { id, title } = this.props.library;
+    const { id, title } = this.props.library;
 
-     return (
-       <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
-         <View>
-           <CardSection>
-             <Text style={styles}>
-               {title}
-             </Text>
-             {this.renderDescription()}
-           </CardSection>
-         </View>
+    return (
+      <TouchableWithoutFeedback onPress={() => this.props.selectLibrary(id)}>
+        <View>
+          <CardSection>
+            <Text style={styles}>
+              {title}
+            </Text>
+            {this.renderDescription()}
+          </CardSection>
+        </View>
       </TouchableWithoutFeedback>
-     );
-   }
- }
+    );
+  }
+}
 
- const mapStateToProps = state => {
-   return { selectedLibraryID: state.selectedLibraryID };
- };
+const mapStateToProps = (state, ownProps) => {
 
- export default connect(mapStateToProps, actions)(LibraryListItem);
+  const expanded = state.selectedLibraryID === ownProps.library.id;
+
+  return { expanded };
+};
+
+export default connect(mapStateToProps, actions)(LibraryListItem);
